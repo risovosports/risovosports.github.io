@@ -84,3 +84,177 @@
 .home-photo{background-size:cover;background-position:center;background-repeat:no-repeat}.home-cta{background-size:cover;background-position:center;background-repeat:no-repeat}
 @media(max-width:1100px){.photo-card-grid{grid-template-columns:1fr}.support-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.support-photo-grid{grid-template-columns:1fr}.photo-card .photo{height:220px}.support-photo .support-image{height:200px}}
+
+/* ===== FINAL IMAGE PRESENTATION ===== */
+.home-photo{overflow:hidden;background:#061827;min-height:560px;}
+.home-photo img{display:block;width:100%;height:100%;min-height:560px;object-fit:cover;object-position:center center;}
+.photo-card .photo{height:auto;min-height:0;padding:0;background:#061827;overflow:hidden;}
+.photo-card .photo img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center center;}
+.support-photo .support-image{height:auto;min-height:0;background:#061827;overflow:hidden;}
+.support-photo .support-image img{display:block;width:100%;height:auto;object-fit:contain;object-position:center center;}
+.image-band{min-height:360px;background-size:cover;background-position:center center;background-repeat:no-repeat;}
+@media(max-width:900px){
+  .home-photo{min-height:420px;}
+  .home-photo img{min-height:420px;}
+}
+@media(max-width:560px){
+  .home-photo{min-height:320px;}
+  .home-photo img{min-height:320px;}
+}
+
+
+/* =========================================================
+   FINAL RESPONSIVE IMAGE ALIGNMENT
+   - Hero image shows the full source without cropping.
+   - Who We Support images preserve their native 2.5:1 ratio.
+   - Service images use a consistent, balanced crop.
+   - Contact image uses a controlled wide presentation.
+   ========================================================= */
+
+/* HERO */
+.home-visual{
+  grid-template-columns:minmax(0,1.05fr) minmax(420px,.95fr);
+  align-items:center;
+}
+.home-photo{
+  min-height:0 !important;
+  aspect-ratio:3264 / 2160;
+  background:none !important;
+  overflow:hidden;
+  border-radius:0;
+}
+.home-photo img{
+  display:block;
+  width:100%;
+  height:auto !important;
+  min-height:0 !important;
+  max-width:100%;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+
+/* SERVICE CARDS */
+.photo-card-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+}
+.photo-card{
+  min-width:0;
+}
+.photo-card .photo{
+  height:190px !important;
+  min-height:190px !important;
+  padding:0 !important;
+  background:none !important;
+}
+.photo-card .photo img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center center;
+}
+
+/* WHO WE SUPPORT */
+.support-photo-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+}
+.support-photo{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.support-photo .support-image{
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:1350 / 540;
+  background:none !important;
+  overflow:hidden;
+}
+.support-photo .support-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+}
+
+/* CONTACT / CTA */
+.image-band{
+  position:relative;
+  min-height:0 !important;
+  aspect-ratio:1600 / 700;
+  background:none !important;
+  overflow:hidden;
+}
+.image-band::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(4,18,31,.90),rgba(4,18,31,.28));
+  z-index:1;
+}
+.image-band::after{
+  display:none;
+}
+.image-band > img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:0;
+}
+.image-band > .wrap{
+  position:relative;
+  z-index:2;
+}
+
+/* desktop spacing */
+@media (min-width:901px){
+  .home-copy{padding:72px 0;}
+  .home-photo{max-width:100%;}
+}
+
+/* tablet */
+@media (max-width:1100px){
+  .home-visual{
+    grid-template-columns:1fr;
+  }
+  .home-photo{
+    width:100%;
+    max-width:100%;
+    margin-top:10px;
+  }
+  .support-photo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+/* mobile */
+@media (max-width:760px){
+  .home-copy{padding:58px 0 42px;}
+  .home-photo{
+    aspect-ratio:3264 / 2160;
+    width:100%;
+  }
+  .photo-card-grid{
+    grid-template-columns:1fr;
+  }
+  .photo-card .photo{
+    height:220px !important;
+    min-height:220px !important;
+  }
+  .support-photo-grid{
+    grid-template-columns:1fr;
+  }
+  .support-photo .support-image{
+    aspect-ratio:1350 / 540;
+  }
+  .image-band{
+    aspect-ratio:1600 / 700;
+  }
+}
